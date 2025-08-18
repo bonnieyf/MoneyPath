@@ -1,0 +1,10 @@
+node_modules/*
+
+# 忽略個人理財設定檔案
+理財設定_*.csv
+*.csv
+
+# 忽略調試檔案
+debug-*.js
+test-*.js
+calculation-example.js

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理財預測計算器</title>
+    <link rel="stylesheet" href="style-new.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💰 理財預測計算器</h1>
+            <p>根據您的收入和固定支出，預測未來財務狀況</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="income-section">
+                    <h2>收入設定</h2>
+                    <div class="income-input">
+                        <label>
+                            <input type="radio" name="income-type" value="monthly" checked> 月薪
+                        </label>
+                        <label>
+                            <input type="radio" name="income-type" value="yearly"> 年薪
+                        </label>
+                    </div>
+                    <div class="input-group">
+                        <label for="income-amount">金額 (NTD):</label>
+                        <input type="number" id="income-amount" placeholder="請輸入金額" min="0">
+                    </div>
+                </div>
+
+                <div class="expenses-section">
+                    <h2>固定支出</h2>
+                    <div id="expenses-list">
+                        <div class="expense-item">
+                            <input type="text" placeholder="支出項目名稱" class="expense-name">
+                            <input type="number" placeholder="金額 (NTD)" class="expense-amount" min="0">
+                            <select class="expense-frequency">
+                                <option value="monthly">每月</option>
+                                <option value="yearly">每年</option>
+                            </select>
+                            <button type="button" class="remove-expense">刪除</button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-expense">+ 新增支出項目</button>
+                </div>
+
+                <div class="prediction-section">
+                    <h2>預測設定</h2>
+                    <div class="input-group">
+                        <label for="prediction-months">預測月數:</label>
+                        <input type="number" id="prediction-months" value="12" min="1" max="120">
+                    </div>
+                </div>
+
+                <button type="button" id="calculate-btn">計算預測</button>
+            </section>
+
+            <section class="results-section" id="results-section" style="display: none;">
+                <h2>預測結果</h2>
+                <div class="summary">
+                    <div class="summary-item">
+                        <span class="label">月收入:</span>
+                        <span id="monthly-income" class="value"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">月固定支出:</span>
+                        <span id="monthly-expenses" class="value"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">月淨收入:</span>
+                        <span id="monthly-net" class="value"></span>
+                    </div>
+                </div>
+                
+                <div class="prediction-chart">
+                    <h3>累積財務狀況</h3>
+                    <canvas id="prediction-canvas" width="800" height="400"></canvas>
+                </div>
+                
+                <div class="prediction-table">
+                    <h3>月度明細</h3>
+                    <table id="prediction-table">
+                        <thead>
+                            <tr>
+                                <th>月份</th>
+                                <th>收入</th>
+                                <th>支出</th>
+                                <th>淨收入</th>
+                                <th>累積金額</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prediction-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
